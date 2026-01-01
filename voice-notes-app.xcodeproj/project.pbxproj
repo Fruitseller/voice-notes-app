@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AEE2D8972F07120400CEA18A /* project.md in Resources */ = {isa = PBXBuildFile; fileRef = AEE2D8962F0711F700CEA18A /* project.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		AEE2D8832F070C3900CEA18A /* voice-notes-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "voice-notes-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEE2D8962F0711F700CEA18A /* project.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = project.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -45,6 +50,7 @@
 		AEE2D87A2F070C3900CEA18A = {
 			isa = PBXGroup;
 			children = (
+				AEE2D8962F0711F700CEA18A /* project.md */,
 				AEE2D8852F070C3900CEA18A /* voice-notes-app */,
 				AEE2D8842F070C3900CEA18A /* Products */,
 			);
@@ -122,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEE2D8972F07120400CEA18A /* project.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
