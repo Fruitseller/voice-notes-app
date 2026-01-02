@@ -20,6 +20,7 @@ class SpeechRecognitionService {
     private var audioEngine = AVAudioEngine()
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
+    private var accumulatedTranscription: String = ""
 
     // MARK: - Permission Handling
 
@@ -46,6 +47,7 @@ class SpeechRecognitionService {
     func startRecording() throws {
         // Reset previous state
         transcription = ""
+        accumulatedTranscription = ""
         error = nil
 
         // Cancel any ongoing task
@@ -77,13 +79,27 @@ class SpeechRecognitionService {
                 guard let self = self else { return }
 
                 if let result = result {
-                    self.transcription = result.bestTranscription.formattedString
+                    let currentSegment = result.bestTranscription.formattedString
+
+                    if result.isFinal {
+                        // Segment is final - add to accumulated text
+                        if !self.accumulatedTranscription.isEmpty {
+                            self.accumulatedTranscription += " "
+                        }
+                        self.accumulatedTranscription += currentSegment
+                        self.transcription = self.accumulatedTranscription
+                    } else {
+                        // Partial result - show accumulated + current segment
+                        if self.accumulatedTranscription.isEmpty {
+                            self.transcription = currentSegment
+                        } else {
+                            self.transcription = self.accumulatedTranscription + " " + currentSegment
+                        }
+                    }
                 }
 
                 if let error = error {
                     self.error = error
-                    self.stopRecordingInternal()
-                } else if result?.isFinal == true {
                     self.stopRecordingInternal()
                 }
             }
