@@ -7,12 +7,16 @@
 
 import SwiftUI
 import SwiftData
+import FoundationModels
+import Speech
+import AVFoundation
+import PDFKit
 
 @main
 struct voice_notes_appApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            VoiceNote.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
