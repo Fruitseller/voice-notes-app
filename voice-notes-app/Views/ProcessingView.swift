@@ -8,10 +8,16 @@ import SwiftUI
 struct ProcessingView: View {
     let partialResult: ProcessedNote.PartiallyGenerated?
 
+    @State private var isPulsing = false
+
     var body: some View {
         VStack(spacing: 24) {
             ProgressView()
-                .scaleEffect(1.5)
+                .scaleEffect(isPulsing ? 1.6 : 1.4)
+                .animation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: isPulsing)
+                .onAppear {
+                    isPulsing = true
+                }
 
             Text("Verarbeitung läuft...")
                 .font(.headline)
@@ -27,6 +33,7 @@ struct ProcessingView: View {
                             Text(summary)
                                 .font(.body)
                         }
+                        .transition(.opacity.combined(with: .move(edge: .top)))
                     }
 
                     if let correctedText = result.correctedText, !correctedText.isEmpty {
@@ -38,15 +45,19 @@ struct ProcessingView: View {
                             Text(correctedText)
                                 .font(.body)
                         }
+                        .transition(.opacity.combined(with: .move(edge: .top)))
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
                 .background(Color(.secondarySystemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
+                .animation(.easeInOut(duration: 0.3), value: result.summary)
+                .animation(.easeInOut(duration: 0.3), value: result.correctedText)
             }
         }
         .padding()
+        .animation(.easeInOut(duration: 0.3), value: partialResult != nil)
     }
 }
 

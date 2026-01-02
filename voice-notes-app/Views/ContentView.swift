@@ -119,7 +119,10 @@ struct ContentView: View {
             }
             Button("Löschen", role: .destructive) {
                 if let note = noteToDelete {
-                    modelContext.delete(note)
+                    HapticFeedback.deleted()
+                    withAnimation(.spring(duration: 0.3)) {
+                        modelContext.delete(note)
+                    }
                     noteToDelete = nil
                 }
             }

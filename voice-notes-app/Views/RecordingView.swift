@@ -128,6 +128,7 @@ struct RecordingView: View {
         let transcription = speechService.transcription
 
         guard !transcription.isEmpty else {
+            HapticFeedback.error()
             showEmptyTranscriptionAlert = true
             return
         }
@@ -146,6 +147,7 @@ struct RecordingView: View {
             @unknown default:
                 availabilityMessage = "Apple Intelligence ist nicht verfügbar."
             }
+            HapticFeedback.error()
             showAvailabilityAlert = true
             return
         }
@@ -171,12 +173,14 @@ struct RecordingView: View {
                         correctedText: correctedText,
                         summary: summary
                     )
+                    HapticFeedback.success()
                 }
 
                 processingState = .done
                 dismiss()
             } catch {
                 processingState = .idle
+                HapticFeedback.error()
                 availabilityMessage = "Verarbeitung fehlgeschlagen: \(error.localizedDescription)"
                 showAvailabilityAlert = true
             }
