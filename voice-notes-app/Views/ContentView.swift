@@ -22,13 +22,30 @@ struct ContentView: View {
                 } else {
                     List {
                         ForEach(notes) { note in
-                            VStack(alignment: .leading, spacing: 8) {
+                            VStack(alignment: .leading, spacing: 12) {
                                 Text(note.timestamp, format: .dateTime.day().month().year().hour().minute())
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
-                                Text(note.summary)
-                                    .font(.subheadline)
+
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text("Zusammenfassung")
+                                        .font(.caption)
+                                        .fontWeight(.semibold)
+                                        .foregroundStyle(.secondary)
+                                    Text(note.summary)
+                                        .font(.subheadline)
+                                }
+
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text("Notiz")
+                                        .font(.caption)
+                                        .fontWeight(.semibold)
+                                        .foregroundStyle(.secondary)
+                                    Text(note.correctedText)
+                                        .font(.subheadline)
+                                }
                             }
+                            .padding(.vertical, 4)
                         }
                     }
                 }
