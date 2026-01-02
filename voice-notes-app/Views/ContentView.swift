@@ -13,6 +13,7 @@ struct ContentView: View {
     @Query(sort: \VoiceNote.timestamp, order: .reverse) private var notes: [VoiceNote]
 
     @State private var showRecordingSheet = false
+    @State private var showExportSheet = false
     @State private var noteToDelete: VoiceNote?
     @State private var showDeleteConfirmation = false
     @State private var noteToShare: VoiceNote?
@@ -88,6 +89,21 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Sprachnotizen")
+            .toolbar {
+                if !notes.isEmpty {
+                    ToolbarItem(placement: .primaryAction) {
+                        Button {
+                            showExportSheet = true
+                        } label: {
+                            Image(systemName: "square.and.arrow.up")
+                        }
+                        .accessibilityLabel("Alle Notizen exportieren")
+                    }
+                }
+            }
+        }
+        .sheet(isPresented: $showExportSheet) {
+            ExportView(notes: notes)
         }
         .sheet(isPresented: $showRecordingSheet) {
             RecordingView()
