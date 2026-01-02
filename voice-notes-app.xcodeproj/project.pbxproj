@@ -7,10 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AEB0B0572F087A8B00EC09A1 /* Testing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEB0B0562F087A8B00EC09A1 /* Testing.framework */; platformFilter = ios; };
 		AEE2D8972F07120400CEA18A /* project.md in Resources */ = {isa = PBXBuildFile; fileRef = AEE2D8962F0711F700CEA18A /* project.md */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		AEB0B0482F08799F00EC09A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AEE2D87B2F070C3900CEA18A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AEE2D8822F070C3900CEA18A;
+			remoteInfo = "voice-notes-app";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		AEB0B0442F08799F00EC09A1 /* voice-notes-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "voice-notes-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEB0B0562F087A8B00EC09A1 /* Testing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Testing.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/Testing.framework; sourceTree = DEVELOPER_DIR; };
+		AEB0B0582F087BD600EC09A1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AEE2D8832F070C3900CEA18A /* voice-notes-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "voice-notes-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE2D8962F0711F700CEA18A /* project.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = project.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -26,6 +40,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		AEB0B0452F08799F00EC09A1 /* voice-notes-appTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "voice-notes-appTests";
+			sourceTree = "<group>";
+		};
 		AEE2D8852F070C3900CEA18A /* voice-notes-app */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -37,6 +56,14 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AEB0B0412F08799F00EC09A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEB0B0572F087A8B00EC09A1 /* Testing.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AEE2D8802F070C3900CEA18A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,11 +74,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AEB0B0552F087A8B00EC09A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AEB0B0562F087A8B00EC09A1 /* Testing.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AEE2D87A2F070C3900CEA18A = {
 			isa = PBXGroup;
 			children = (
+				AEB0B0582F087BD600EC09A1 /* README.md */,
 				AEE2D8962F0711F700CEA18A /* project.md */,
 				AEE2D8852F070C3900CEA18A /* voice-notes-app */,
+				AEB0B0452F08799F00EC09A1 /* voice-notes-appTests */,
+				AEB0B0552F087A8B00EC09A1 /* Frameworks */,
 				AEE2D8842F070C3900CEA18A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				AEE2D8832F070C3900CEA18A /* voice-notes-app.app */,
+				AEB0B0442F08799F00EC09A1 /* voice-notes-appTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,6 +106,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AEB0B0432F08799F00EC09A1 /* voice-notes-appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEB0B04C2F08799F00EC09A1 /* Build configuration list for PBXNativeTarget "voice-notes-appTests" */;
+			buildPhases = (
+				AEB0B0402F08799F00EC09A1 /* Sources */,
+				AEB0B0412F08799F00EC09A1 /* Frameworks */,
+				AEB0B0422F08799F00EC09A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AEB0B0492F08799F00EC09A1 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AEB0B0452F08799F00EC09A1 /* voice-notes-appTests */,
+			);
+			name = "voice-notes-appTests";
+			packageProductDependencies = (
+			);
+			productName = "voice-notes-appTests";
+			productReference = AEB0B0442F08799F00EC09A1 /* voice-notes-appTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		AEE2D8822F070C3900CEA18A /* voice-notes-app */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AEE2D8912F070C3900CEA18A /* Build configuration list for PBXNativeTarget "voice-notes-app" */;
@@ -99,6 +161,10 @@
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					AEB0B0432F08799F00EC09A1 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = AEE2D8822F070C3900CEA18A;
+					};
 					AEE2D8822F070C3900CEA18A = {
 						CreatedOnToolsVersion = 26.2;
 					};
@@ -119,11 +185,19 @@
 			projectRoot = "";
 			targets = (
 				AEE2D8822F070C3900CEA18A /* voice-notes-app */,
+				AEB0B0432F08799F00EC09A1 /* voice-notes-appTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AEB0B0422F08799F00EC09A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AEE2D8812F070C3900CEA18A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -135,6 +209,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AEB0B0402F08799F00EC09A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AEE2D87F2F070C3900CEA18A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -144,7 +225,55 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		AEB0B0492F08799F00EC09A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AEE2D8822F070C3900CEA18A /* voice-notes-app */;
+			targetProxy = AEB0B0482F08799F00EC09A1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		AEB0B04A2F08799F00EC09A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "piotr.apple.voice-notes-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/voice-notes-app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/voice-notes-app";
+			};
+			name = Debug;
+		};
+		AEB0B04B2F08799F00EC09A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "piotr.apple.voice-notes-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/voice-notes-app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/voice-notes-app";
+			};
+			name = Release;
+		};
 		AEE2D8922F070C3900CEA18A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -333,6 +462,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AEB0B04C2F08799F00EC09A1 /* Build configuration list for PBXNativeTarget "voice-notes-appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEB0B04A2F08799F00EC09A1 /* Debug */,
+				AEB0B04B2F08799F00EC09A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AEE2D87E2F070C3900CEA18A /* Build configuration list for PBXProject "voice-notes-app" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
