@@ -59,7 +59,7 @@ struct ContentView: View {
             .navigationTitle("Sprachnotizen")
         }
         .sheet(isPresented: $showRecordingSheet) {
-            Text("Aufnahme-Ansicht (kommt in Phase 2)")
+            RecordingView()
         }
     }
 }
