@@ -394,7 +394,6 @@ Kernfunktionalität komplett – Aufnahme → Transkription → KI-Verarbeitung 
 - Sehr lange Aufnahmen: Ggf. Hinweis oder Limit
 
 **6.6 Animationen hinzufügen**
-- RecordButton: scaleEffect(isRecording ? 1.1 : 1.0) mit Animation(.easeInOut.repeatForever(autoreverses: true))
 - Card-Liste: .animation(.spring, value: notes.count)
 - Processing-View: Subtile Puls-Animation
 
