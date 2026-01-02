@@ -13,6 +13,10 @@ struct ContentView: View {
     @Query(sort: \VoiceNote.timestamp, order: .reverse) private var notes: [VoiceNote]
 
     @State private var showRecordingSheet = false
+    @State private var noteToDelete: VoiceNote?
+    @State private var showDeleteConfirmation = false
+    @State private var noteToShare: VoiceNote?
+    @State private var showShareSheet = false
 
     var body: some View {
         NavigationStack {
@@ -22,32 +26,42 @@ struct ContentView: View {
                 } else {
                     List {
                         ForEach(notes) { note in
-                            VStack(alignment: .leading, spacing: 12) {
-                                Text(note.timestamp, format: .dateTime.day().month().year().hour().minute())
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text("Zusammenfassung")
-                                        .font(.caption)
-                                        .fontWeight(.semibold)
-                                        .foregroundStyle(.secondary)
-                                    Text(note.summary)
-                                        .font(.subheadline)
+                            VoiceNoteCard(
+                                note: note,
+                                onDelete: {
+                                    noteToDelete = note
+                                    showDeleteConfirmation = true
+                                },
+                                onShare: {
+                                    noteToShare = note
+                                    showShareSheet = true
                                 }
-
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text("Notiz")
-                                        .font(.caption)
-                                        .fontWeight(.semibold)
-                                        .foregroundStyle(.secondary)
-                                    Text(note.correctedText)
-                                        .font(.subheadline)
+                            )
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                Button(role: .destructive) {
+                                    noteToDelete = note
+                                    showDeleteConfirmation = true
+                                } label: {
+                                    Label("Löschen", systemImage: "trash")
                                 }
                             }
-                            .padding(.vertical, 4)
+                            .swipeActions(edge: .leading) {
+                                Button {
+                                    noteToShare = note
+                                    showShareSheet = true
+                                } label: {
+                                    Label("Teilen", systemImage: "square.and.arrow.up")
+                                }
+                                .tint(.blue)
+                            }
                         }
                     }
+                    .listStyle(.plain)
+                    .background(Color(.systemGroupedBackground))
+                    .scrollContentBackground(.hidden)
                 }
 
                 // FAB (Floating Action Button)
@@ -77,6 +91,24 @@ struct ContentView: View {
         }
         .sheet(isPresented: $showRecordingSheet) {
             RecordingView()
+        }
+        .sheet(isPresented: $showShareSheet) {
+            if let note = noteToShare {
+                ShareSheet(items: [note.shareText])
+            }
+        }
+        .alert("Notiz löschen?", isPresented: $showDeleteConfirmation) {
+            Button("Abbrechen", role: .cancel) {
+                noteToDelete = nil
+            }
+            Button("Löschen", role: .destructive) {
+                if let note = noteToDelete {
+                    modelContext.delete(note)
+                    noteToDelete = nil
+                }
+            }
+        } message: {
+            Text("Diese Notiz wird unwiderruflich gelöscht.")
         }
     }
 }
