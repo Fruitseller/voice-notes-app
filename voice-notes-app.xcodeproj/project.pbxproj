@@ -22,6 +22,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE3CCAC72F0AFE61000C8BAA /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		AEB0B0442F08799F00EC09A1 /* voice-notes-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "voice-notes-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB0B0562F087A8B00EC09A1 /* Testing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Testing.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/Testing.framework; sourceTree = DEVELOPER_DIR; };
 		AEB0B0582F087BD600EC09A1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 		AEE2D87A2F070C3900CEA18A = {
 			isa = PBXGroup;
 			children = (
+				AE3CCAC72F0AFE61000C8BAA /* CLAUDE.md */,
 				AEB0B0582F087BD600EC09A1 /* README.md */,
 				AEE2D8962F0711F700CEA18A /* project.md */,
 				AEE2D8852F070C3900CEA18A /* voice-notes-app */,
