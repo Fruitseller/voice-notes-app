@@ -25,8 +25,8 @@ struct RecordingView: View {
     @State private var processingState: ProcessingState = .idle
     @State private var partialResult: ProcessedNote.PartiallyGenerated?
     @State private var showEmptyTranscriptionAlert = false
-    @State private var showAvailabilityAlert = false
-    @State private var availabilityMessage = ""
+    @State private var showErrorAlert = false
+    @State private var errorMessage = ""
 
     var body: some View {
         NavigationStack {
@@ -89,10 +89,12 @@ struct RecordingView: View {
             } message: {
                 Text("Es wurde keine Sprache erkannt. Bitte versuche es erneut.")
             }
-            .alert("Apple Intelligence nicht verfügbar", isPresented: $showAvailabilityAlert) {
-                Button("OK", role: .cancel) {}
+            .alert("Fehler", isPresented: $showErrorAlert) {
+                Button("OK") {
+                    dismiss()
+                }
             } message: {
-                Text(availabilityMessage)
+                Text(errorMessage)
             }
             .task {
                 hasPermission = await speechService.requestPermissions()
@@ -141,14 +143,14 @@ struct RecordingView: View {
         case .unavailable(let reason):
             switch reason {
             case .appleIntelligenceNotEnabled:
-                availabilityMessage = "Bitte aktiviere Apple Intelligence in den Einstellungen."
+                errorMessage = "Bitte aktiviere Apple Intelligence in den Einstellungen."
             case .modelNotReady:
-                availabilityMessage = "Das Sprachmodell wird noch heruntergeladen. Bitte versuche es später erneut."
+                errorMessage = "Das Sprachmodell wird noch heruntergeladen. Bitte versuche es später erneut."
             @unknown default:
-                availabilityMessage = "Apple Intelligence ist nicht verfügbar."
+                errorMessage = "Apple Intelligence ist nicht verfügbar."
             }
             HapticFeedback.error()
-            showAvailabilityAlert = true
+            showErrorAlert = true
             return
         }
 
@@ -181,8 +183,8 @@ struct RecordingView: View {
             } catch {
                 processingState = .idle
                 HapticFeedback.error()
-                availabilityMessage = "Verarbeitung fehlgeschlagen: \(error.localizedDescription)"
-                showAvailabilityAlert = true
+                errorMessage = error.localizedDescription
+                showErrorAlert = true
             }
         }
     }
