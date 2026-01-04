@@ -30,6 +30,7 @@ struct VoiceNoteCard: View {
                     .fontWeight(.semibold)
                 Text(note.summary)
                     .font(.subheadline)
+                    .fixedSize(horizontal: false, vertical: true)
             }
 
             Divider()
@@ -37,6 +38,7 @@ struct VoiceNoteCard: View {
             // Corrected text
             Text(note.correctedText)
                 .font(.body)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .cardStyle()
         .accessibilityElement(children: .combine)
